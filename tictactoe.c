@@ -9,8 +9,7 @@
 //variables
 //int p1Choice
 //int p2Choice
-//char col[]
-//char row[]
+//char loc[]
 //bool complete
 
 //while loop to get chosen user choice
@@ -26,6 +25,7 @@
 //case 1: Player v AI
 //while loop where player plays the game against an AI
 //condition = Enum status
+//print current game board
 
 //player inputs location via numbers for column | rows (prevent choosing a location already taken)
 
