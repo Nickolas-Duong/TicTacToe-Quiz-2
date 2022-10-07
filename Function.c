@@ -401,14 +401,15 @@ void aiChoice(char *loc[])
 void printTable(char *loc[])
 {
     printf("Current Board: \n");
-    printf("    1   2   3\n");
-    printf("  +---+---+---+\n");
-    printf("1 | %s | %s | %s |\n", loc[0], loc[1], loc[2]);
-    printf("  +---+---+---+\n");
-    printf("2 | %s | %s | %s |\n", loc[3], loc[4], loc[5]);
-    printf("  +---+---+---+\n");
-    printf("3 | %s | %s | %s |\n", loc[6], loc[7], loc[8]);
-    printf("  +---+---+---+\n");
+    printf("      C   O   L\n");
+    printf("      1   2   3\n");
+    printf("    +---+---+---+\n");
+    printf("R 1 | %s | %s | %s |\n", loc[0], loc[1], loc[2]);
+    printf("    +---+---+---+\n");
+    printf("O 2 | %s | %s | %s |\n", loc[3], loc[4], loc[5]);
+    printf("    +---+---+---+\n");
+    printf("W 3 | %s | %s | %s |\n", loc[6], loc[7], loc[8]);
+    printf("    +---+---+---+\n");
 }
 
 //function definition for printing results
@@ -451,17 +452,14 @@ enum win checkResults(char *loc[], int player)
     
     if(*loc[0] == icon && *loc[3] == icon && *loc[6] == icon|| *loc[1] == icon && *loc[4] == icon && *loc[7] == icon|| *loc[2] == icon && *loc[5] == icon && *loc[8] == icon)
     {
-        printf("win\n");
         return Win;
     }
     else if(*loc[0] == icon && *loc[1] == icon && *loc[2] == icon|| *loc[3] == icon && *loc[4] == icon && *loc[5] == icon|| *loc[6] == icon && *loc[7] == icon && *loc[8] == icon)
     {
-        printf("win\n");
         return Win;
     }
     else if(*loc[0] == icon && *loc[4] == icon && *loc[8] == icon|| *loc[2] == icon && *loc[4] == icon && *loc[6] == icon)
     {
-        printf("win\n");
         return Win;
     }
     else if (count >= 9)
