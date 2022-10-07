@@ -3,9 +3,39 @@
 
 //include system, string, time function, header with functions
 //enum win condition?
+#include "tictactoe.h"
 
 //create main
+int main()
+{
+    char *loc[9] = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
+    bool inPlay = true;
+    enum win p1 = None;
+    enum win p2 = None;
 
+    while(inPlay == true)
+    {
+        printTable(loc);
+        
+        playerChoice(1, loc);
+
+        aiChoice(loc);
+
+        p1 = checkResults(loc);
+        p2 = checkResults(loc);
+
+        if(p1 == Win || p2 == Win)
+        {
+            inPlay = false;
+        }
+        else
+        {
+            inPlay = true;
+        }
+    }
+
+    return 0;
+}
 //variables
 //int p1Choice
 //int p2Choice
@@ -31,8 +61,7 @@
 
 //AI then randomly chooses an option, re rolling when spot is occupied
 
-//continue play until completion
-
+//check for win condition met
 //if else for enum
 //change enum to game result
 //print result of game
