@@ -16,7 +16,7 @@ void aiChoice(char *loc[]);
 //function declaration for printing table
 void printTable(char *loc[]);
 //function declaration to print results
-void printResults(enum win result, int player);
+void printResults(enum win result[]);
 //function declaration to determine if game is won
 enum win checkResults(char *loc[], int player);
 //function definition to get user input

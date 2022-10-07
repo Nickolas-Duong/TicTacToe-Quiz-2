@@ -412,23 +412,28 @@ void printTable(char *loc[])
 }
 
 //function definition for printing results
-void printResults(enum win result, int player)
+void printResults(enum win result[])
 {
-    if(result == Win)
+    int playerCount = 2;
+    for(int i = 0; i < playerCount; i++)
     {
-        printf("Player %d Wins!\n", player);
-    }
-    else if(result == Loss)
-    {
-        printf("Player %d Loses!\n", player);
-    }
-    else if(result == Scratch)
-    {
-        printf("No One Wins!\n");
-    }
-    else
-    {
-        printf("No Game Played Yet!\n");
+        if(result[i] == Win)
+        {
+            printf("Player %d Wins!\n", i+1);
+        }
+        else if(result[i] == Loss)
+        {
+            printf("Player %d Loses!\n", i+1);
+        }
+        else if(result[i] == Scratch && result[i+1] == Scratch)
+        {
+            printf("No One Wins! Scratch Game!\n");
+            break;
+        }
+        else
+        {
+            printf("No Game Played Yet!\n");
+        }
     }
 }
 //function definition for determine game state

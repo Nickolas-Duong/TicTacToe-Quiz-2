@@ -9,8 +9,7 @@ int main()
 {
     char *loc[9] = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
     bool inPlay = true;
-    enum win p1 = None;
-    enum win p2 = None;
+    enum win players[2] = {None, None};
 
     while(inPlay == true)
     {
@@ -18,21 +17,23 @@ int main()
         
         playerChoice(1, loc);
         count++;
-        p1 = checkResults(loc, 1);
+        players[0] = checkResults(loc, 1);
         
         aiChoice(loc);
         count++;
-        p2 = checkResults(loc, 2);
+        players[1] = checkResults(loc, 2);
 
-        if(p1 == Win)
+        if(players[0] == Win)
         {
             inPlay = false;
-            p2 = Loss;
+            players[1] = Loss;
+            printResults(players);
         }
-        else if(p2 == Win)
+        else if(players[1] == Win)
         {
             inPlay = false;
-            p1 = Loss;
+            players[0] = Loss;
+            printResults(players);
         }
         else
         {
