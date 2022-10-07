@@ -6,19 +6,19 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
-static int count = 0;
+static int count;
 
 enum win{Win, Loss, Scratch, None};
 //Function declaration for player choice
 void playerChoice(int player, char *loc[]);
 //function declaration for AI random
-void aiChoice(char *loc[]);
+void aiChoice(char *loc[], int count);
 //function declaration for printing table
 void printTable(char *loc[]);
 //function declaration to print results
 void printResults(enum win result[]);
 //function declaration to determine if game is won
-enum win checkResults(char *loc[], int player);
+enum win checkResults(char *loc[], int player, int count);
 //function definition to get user input
 int getChoice();
 #endif

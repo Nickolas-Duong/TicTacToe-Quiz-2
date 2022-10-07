@@ -259,7 +259,7 @@ void playerChoice(int player, char *loc[])
 }
 
 //function for random choice by AI
-void aiChoice(char *loc[])
+void aiChoice(char *loc[], int count)
 {
     //local variables
     time_t t;
@@ -267,11 +267,16 @@ void aiChoice(char *loc[])
     int row;
     bool complete = false;
     
-    if(count >= 9)
+    if(count == 9)
     {
         complete = true;
+        printf("Complete\n");
     }
-    
+    else
+    {
+        printf("Player 2 is making a move...\n");
+    }
+
     while(complete != true)
     {
         col = 0;
@@ -438,7 +443,7 @@ void printResults(enum win result[])
     }
 }
 //function definition for determine game state
-enum win checkResults(char *loc[], int player)
+enum win checkResults(char *loc[], int player, int count)
 {
     char icon;
     if(player == 1)
