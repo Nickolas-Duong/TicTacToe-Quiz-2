@@ -14,6 +14,9 @@ void playerChoice(int player, char *loc[])
     //while loop (move made)
     while(complete != true)
     {   
+        col = 0;
+        row = 0;
+
         //While loop to make sure input is correct
         while(col <1 || col > 4 || row < 1 || row > 4)
         {
@@ -40,11 +43,11 @@ void playerChoice(int player, char *loc[])
 
         printf("Exit while loop\n");
 
-        switch(col)
+        switch(row)
         {
             case 1:
             {
-                switch (row)
+                switch (col)
                 {
                     //col 1, row 1
                 case 1:
@@ -116,7 +119,7 @@ void playerChoice(int player, char *loc[])
             //col 2
             case 2:
             {
-                switch (row)
+                switch (col)
                 {
                     //col 2, row 1
                 case 1:
@@ -184,7 +187,7 @@ void playerChoice(int player, char *loc[])
             //col 3
             case 3:
             {
-                switch (row)
+                switch (col)
                 {
                     //row 1
                 case 1:
@@ -261,21 +264,26 @@ void aiChoice(char *loc[])
     int row;
     bool complete = false;
     //randomize random number
-    srand((unsigned) time(&t));
+
     
     while(complete != true)
     {
+        col = 0;
+        row = 0;
+
+        srand((unsigned) time(&t));
+
         //Random col
         col = (rand() % 3) + 1;
 
         //Random row
         row = (rand() % 3) + 1;
 
-        switch(col)
+        switch(row)
         {
             case 1:
             {
-                switch (row)
+                switch (col)
                 {
                     //col 1, row 1
                 case 1:
@@ -287,10 +295,6 @@ void aiChoice(char *loc[])
                         complete = true;
                     }
                     //reset if location is taken
-                    else
-                    {
-                        printf("Error, location already taken...\n");
-                    }
                     break;
 
                     //col 1, row 2
@@ -300,10 +304,6 @@ void aiChoice(char *loc[])
                         loc[1] = "X";
                         complete = true;
                     }
-                    else
-                    {
-                        printf("Error, location already taken...\n");
-                    }
                     break;
                     //col 1, row 3
                 case 3:
@@ -311,10 +311,6 @@ void aiChoice(char *loc[])
                     {
                         loc[2] = "X";
                         complete = true;
-                    }
-                    else
-                    {
-                        printf("Error, location already taken...\n");
                     }
                     break;    
                 default:
@@ -324,7 +320,7 @@ void aiChoice(char *loc[])
             }
             case 2:
             {
-                switch (row)
+                switch (col)
                 {
                     //col 2, row 1
                 case 1:
@@ -332,10 +328,6 @@ void aiChoice(char *loc[])
                     {
                         loc[3] = "X";
                         complete = true;
-                    }
-                    else
-                    {
-                        printf("Error, location already taken...\n");
                     }
                     break;
                    //row 2 
@@ -345,10 +337,6 @@ void aiChoice(char *loc[])
                         loc[4] = "X";
                         complete = true;
                     }
-                    else
-                    {
-                        printf("Error, location already taken...\n");
-                    }
                     break;
                     //row 3
                 case 3:
@@ -357,20 +345,16 @@ void aiChoice(char *loc[])
                         loc[5] = "X";
                         complete = true;
                     }
-                    else
-                    {
-                        printf("Error, location already taken...\n");
-                    }
                     break;    
                 default:
                     break;
                 }
                 break;
             }
-            //col 2
+            //col 3
             case 3:
             {
-                switch (row)
+                switch (col)
                 {
                     //row 1
                 case 1:
@@ -378,10 +362,6 @@ void aiChoice(char *loc[])
                     {
                         loc[6] = "X";
                         complete = true;
-                    }
-                    else
-                    {
-                        printf("Error, location already taken...\n");
                     }
                     break;
                     //row 2
@@ -391,10 +371,6 @@ void aiChoice(char *loc[])
                         loc[7] = "X";
                         complete = true;
                     }
-                    else
-                    {
-                        printf("Error, location already taken...\n");
-                    }
                     break;
                     //row 3
                 case 3:
@@ -402,10 +378,6 @@ void aiChoice(char *loc[])
                     {
                         loc[8] = "X";
                         complete = true;
-                    }
-                    else
-                    {
-                        printf("Error, location already taken...\n");
                     }
                     break;    
                 default:
@@ -421,13 +393,14 @@ void aiChoice(char *loc[])
 void printTable(char *loc[])
 {
     printf("Current Board: \n");
-    printf("+---+---+---+\n");
-    printf("| %s | %s | %s |\n", loc[0], loc[1], loc[2]);
-    printf("+---+---+---+\n");
-    printf("| %s | %s | %s |\n", loc[3], loc[4], loc[5]);
-    printf("+---+---+---+\n");
-    printf("| %s | %s | %s |\n", loc[6], loc[7], loc[8]);
-    printf("+---+---+---+\n");
+    printf("    1   2   3\n");
+    printf("  +---+---+---+\n");
+    printf("1 | %s | %s | %s |\n", loc[0], loc[1], loc[2]);
+    printf("  +---+---+---+\n");
+    printf("2 | %s | %s | %s |\n", loc[3], loc[4], loc[5]);
+    printf("  +---+---+---+\n");
+    printf("3 | %s | %s | %s |\n", loc[6], loc[7], loc[8]);
+    printf("  +---+---+---+\n");
 }
 
 //function definition for printing results
@@ -453,17 +426,20 @@ void printResults(enum win result, int player)
 //function definition for determine game state
 enum win checkResults(char *loc[])
 {
-    if(*loc[0] == *loc[0+3] == *loc[0+6] || *loc[1] == *loc[1+3] == *loc[1+6] || *loc[2] == *loc[2+3] == *loc[2+6])
+    if(*loc[0] == *loc[3] == *loc[6] || *loc[1] == *loc[4] == *loc[7] || *loc[2] == *loc[5] == *loc[8])
     {
         return Win;
+        printf("win\n");
     }
-    else if(*loc[0] == *loc[0+1] == *loc[0+2] || *loc[3] == *loc[3+1] == *loc[3+2] || *loc[6] == *loc[6+1] == *loc[6+2])
+    else if(*loc[0] == *loc[1] == *loc[2] || *loc[3] == *loc[4] == *loc[5] || *loc[6] == *loc[7] == *loc[8])
     {
         return Win;
+        printf("win\n");
     }
-    else if(*loc[0] == *loc[0+4] == *loc[0+8] || *loc[2] == *loc[2+2] == *loc[2+4])
+    else if(*loc[0] == *loc[4] == *loc[8] || *loc[2] == *loc[4] == *loc[6])
     {
         return Win;
+        printf("win\n");
     }
     else
     {
