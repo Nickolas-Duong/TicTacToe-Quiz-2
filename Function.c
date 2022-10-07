@@ -111,6 +111,7 @@ void playerChoice(int player, char *loc[])
                 default:
                     break;
                 }
+                break;
             }
             //col 2
             case 2:
@@ -178,6 +179,7 @@ void playerChoice(int player, char *loc[])
                 default:
                     break;
                 }
+                break;
             }
             //col 3
             case 3:
@@ -244,6 +246,7 @@ void playerChoice(int player, char *loc[])
                 default:
                     break;
                 }
+                break;
             }
         }
     }
@@ -317,6 +320,7 @@ void aiChoice(char *loc[])
                 default:
                     break;
                 }
+                break;
             }
             case 2:
             {
@@ -361,6 +365,7 @@ void aiChoice(char *loc[])
                 default:
                     break;
                 }
+                break;
             }
             //col 2
             case 3:
@@ -406,6 +411,7 @@ void aiChoice(char *loc[])
                 default:
                     break;
                 }
+                break;
             }
         }
     }
