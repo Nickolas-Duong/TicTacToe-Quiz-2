@@ -22,20 +22,15 @@ void playerChoice(int player, char *loc[])
 
             //get input for col
             printf("Choose a column: ");
-            fflush(stdout);
-            choice = getchar();
-            col = choice;
-
+            col = getChoice();
             //get input for row
             printf("Choose a row: ");
-            fflush(stdout);
-            choice = getchar();
-            row = choice;
+            row = getChoice();
 
             //reset if value is incorrect
             if (col < 1 || row < 1 || col >= 4 || row >= 4)
             {
-                printf("Choice error, please try again...\n");
+                printf("Choice error, please try again...%d %d\n", col, row);
                 col = 0;
                 row = 0;
             }
@@ -464,4 +459,13 @@ enum win checkResults(char *loc[])
     {
         return None;
     }
+}
+
+//fucntion definition for getting choice
+int getChoice()
+{
+    int choice = 0;
+    fflush(stdout);
+    scanf("%d", &choice);
+    return choice;   
 }
