@@ -10,65 +10,154 @@ int main()
     char *loc[9] = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
     bool inPlay = true;
     enum win players[2] = {None, None};
+    int count;
+    int choice = 0;
 
     count = 0;
+    printf("Welcome! Ready to play Tic-Tac-Toe?\n");
+    printf("Please choose a game mode...\n");
+    printf("1 - Player vs AI\n");
+    printf("2 - Player vs Player\n");
 
-    while(inPlay == true)
+    while(choice != 1 && choice != 2)
     {
-        printTable(loc);
-        
-        playerChoice(1, loc);
-        count++;
-        players[0] = checkResults(loc, 1, count);
+        choice = getChoice();
 
-        printf("%d\n", count);
-
-        if(players[0] == Win)
+        if(choice == 1)
         {
-            inPlay = false;
-            players[1] = Loss;
-            printResults(players);
-            break;
+            printf("Player vs AI mode chosen... beginning game...\n");
         }
-        else if(players[1] == Win)
+        else if(choice == 2)
         {
-            inPlay = false;
-            players[0] = Loss;
-            printResults(players);
-            break;
+            printf("Player vs Player mode chosen... beginning game...\n");
         }
         else
         {
-            inPlay = true;
-        }
-
-        aiChoice(loc, count);
-        count++;
-        players[1] = checkResults(loc, 2, count);
-        if(players[0] == Win)
-        {
-            inPlay = false;
-            players[1] = Loss;
-            printResults(players);
-            break;
-        }
-        else if(players[1] == Win)
-        {
-            inPlay = false;
-            players[0] = Loss;
-            printResults(players);
-            break;
-        }
-        else if(players[0] == Scratch && players[1] == Scratch)
-        {
-            inPlay = false;
-            printResults(players);
-        }
-        else
-        {
-            inPlay = true;
+            printf("Error... choice not recognized...\n");
         }
     }
+
+    switch (choice)
+    {
+    case 1:
+        while(inPlay == true)
+        {
+            printTable(loc);
+            
+            playerChoice(1, loc, count);
+            count++;
+            players[0] = checkResults(loc, 1, count);
+
+            if(players[0] == Win)
+            {
+                inPlay = false;
+                players[1] = Loss;
+                printResults(players);
+                break;
+            }
+            else if(players[1] == Win)
+            {
+                inPlay = false;
+                players[0] = Loss;
+                printResults(players);
+                break;
+            }
+            else
+            {
+                inPlay = true;
+            }
+
+            aiChoice(loc, count);
+            count++;
+            players[1] = checkResults(loc, 2, count);
+            if(players[0] == Win)
+            {
+                inPlay = false;
+                players[1] = Loss;
+                printResults(players);
+                break;
+            }
+            else if(players[1] == Win)
+            {
+                inPlay = false;
+                players[0] = Loss;
+                printResults(players);
+                break;
+            }
+            else if(players[0] == Scratch && players[1] == Scratch)
+            {
+                inPlay = false;
+                printResults(players);
+            }
+            else
+            {
+                inPlay = true;
+            }
+        }
+        break;
+    case 2:
+while(inPlay == true)
+        {
+            printTable(loc);
+            
+            playerChoice(1, loc, count);
+            count++;
+            players[0] = checkResults(loc, 1, count);
+
+            if(players[0] == Win)
+            {
+                inPlay = false;
+                players[1] = Loss;
+                printResults(players);
+                break;
+            }
+            else if(players[1] == Win)
+            {
+                inPlay = false;
+                players[0] = Loss;
+                printResults(players);
+                break;
+            }
+            else
+            {
+                inPlay = true;
+            }
+
+            printTable(loc);
+
+            playerChoice(2, loc, count);
+            count++;
+            players[1] = checkResults(loc, 2, count);
+            if(players[0] == Win)
+            {
+                inPlay = false;
+                players[1] = Loss;
+                printResults(players);
+                break;
+            }
+            else if(players[1] == Win)
+            {
+                inPlay = false;
+                players[0] = Loss;
+                printResults(players);
+                break;
+            }
+            else if(players[0] == Scratch && players[1] == Scratch)
+            {
+                inPlay = false;
+                printResults(players);
+            }
+            else
+            {
+                inPlay = true;
+            }
+        }
+        break;
+    default:
+        break;
+    }
+
+    
 
     return 0;
 }

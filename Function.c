@@ -3,7 +3,7 @@
 
 
 //function for player choosing location
-void playerChoice(int player, char *loc[])
+void playerChoice(int player, char *loc[], int count)
 {
     //local variables
     int col = 0;
@@ -270,7 +270,6 @@ void aiChoice(char *loc[], int count)
     if(count == 9)
     {
         complete = true;
-        printf("Complete\n");
     }
     else
     {
