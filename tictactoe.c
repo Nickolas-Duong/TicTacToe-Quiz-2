@@ -21,8 +21,8 @@ int main()
 
         aiChoice(loc);
 
-        p1 = checkResults(loc);
-        p2 = checkResults(loc);
+        p1 = checkResults(loc, 1);
+        p2 = checkResults(loc, 2);
 
         if(p1 == Win || p2 == Win)
         {

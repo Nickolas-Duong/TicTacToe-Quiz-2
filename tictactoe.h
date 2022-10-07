@@ -17,7 +17,7 @@ void printTable(char *loc[]);
 //function declaration to print results
 void printResults(enum win result, int player);
 //function declaration to determine if game is won
-enum win checkResults(char *loc[]);
+enum win checkResults(char *loc[], int player);
 //function definition to get user input
 int getChoice();
 #endif

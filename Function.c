@@ -45,11 +45,12 @@ void playerChoice(int player, char *loc[])
 
         switch(row)
         {
+            //row 1
             case 1:
             {
                 switch (col)
                 {
-                    //col 1, row 1
+                    //col 1
                 case 1:
                     //if not X and O
                     if(loc[0] != "X" && loc[0] != "O")
@@ -73,7 +74,7 @@ void playerChoice(int player, char *loc[])
                     }
                     break;
 
-                    //col 1, row 2
+                    //col 2
                 case 2:
                     if(loc[1] != "X" && loc[1] != "O")
                     {
@@ -92,7 +93,7 @@ void playerChoice(int player, char *loc[])
                         printf("Error, location already taken...\n");
                     }
                     break;
-                    //col 1, row 3
+                    //col 3
                 case 3:
                     if(loc[2] != "X" && loc[2] != "O")
                     {
@@ -116,12 +117,12 @@ void playerChoice(int player, char *loc[])
                 }
                 break;
             }
-            //col 2
+            //row 2
             case 2:
             {
                 switch (col)
                 {
-                    //col 2, row 1
+                    //col 1
                 case 1:
                     if(loc[3] != "X" && loc[3] != "O")
                     {
@@ -141,7 +142,7 @@ void playerChoice(int player, char *loc[])
                     }
                     break;
                     
-                    //row 2
+                    //col 2
                 case 2:
                     if(loc[4] != "X" && loc[4] != "O")
                     {
@@ -160,7 +161,7 @@ void playerChoice(int player, char *loc[])
                         printf("Error, location already taken...\n");
                     }
                     break;
-                    //row 3
+                    //col 3
                 case 3:
                     if(loc[5] != "X" && loc[5] != "O")
                     {
@@ -184,12 +185,12 @@ void playerChoice(int player, char *loc[])
                 }
                 break;
             }
-            //col 3
+            //row 3
             case 3:
             {
                 switch (col)
                 {
-                    //row 1
+                    //col 1
                 case 1:
                     if(loc[6] != "X" && loc[6] != "O")
                     {
@@ -208,7 +209,7 @@ void playerChoice(int player, char *loc[])
                         printf("Error, location already taken...\n");
                     }
                     break;
-                    //row 2
+                    //col 2
                 case 2:
                     if(loc[7] != "X" && loc[7] != "O")
                     {
@@ -227,7 +228,7 @@ void playerChoice(int player, char *loc[])
                         printf("Error, location already taken...\n");
                     }
                     break;
-                    //row 3
+                    //col 3
                 case 3:
                     if(loc[8] != "X" && loc[8] != "O")
                     {
@@ -281,11 +282,12 @@ void aiChoice(char *loc[])
 
         switch(row)
         {
+            //row 1
             case 1:
             {
                 switch (col)
                 {
-                    //col 1, row 1
+                    //col 1
                 case 1:
                     //if not X and O
                     if(loc[0] != "X" && loc[0] != "O")
@@ -297,7 +299,7 @@ void aiChoice(char *loc[])
                     //reset if location is taken
                     break;
 
-                    //col 1, row 2
+                    //col 2
                 case 2:
                     if(loc[1] != "X" && loc[1] != "O")
                     {
@@ -305,7 +307,7 @@ void aiChoice(char *loc[])
                         complete = true;
                     }
                     break;
-                    //col 1, row 3
+                    //col 3
                 case 3:
                     if(loc[2] != "X" && loc[2] != "O")
                     {
@@ -318,11 +320,12 @@ void aiChoice(char *loc[])
                 }
                 break;
             }
+            //row 2
             case 2:
             {
                 switch (col)
                 {
-                    //col 2, row 1
+                    //col 1
                 case 1:
                     if(loc[3] != "X" && loc[3] != "O")
                     {
@@ -330,7 +333,7 @@ void aiChoice(char *loc[])
                         complete = true;
                     }
                     break;
-                   //row 2 
+                   //col 2
                 case 2:
                     if(loc[4] != "X" && loc[4] != "O")
                     {
@@ -338,7 +341,7 @@ void aiChoice(char *loc[])
                         complete = true;
                     }
                     break;
-                    //row 3
+                    //col 3
                 case 3:
                     if(loc[5] != "X" && loc[5] != "O")
                     {
@@ -351,12 +354,12 @@ void aiChoice(char *loc[])
                 }
                 break;
             }
-            //col 3
+            //row 3
             case 3:
             {
                 switch (col)
                 {
-                    //row 1
+                    //col 1
                 case 1:
                     if(loc[6] != "X" && loc[6] != "O")
                     {
@@ -364,7 +367,7 @@ void aiChoice(char *loc[])
                         complete = true;
                     }
                     break;
-                    //row 2
+                    //col 2
                 case 2:
                     if(loc[7] != "X" && loc[7] != "O")
                     {
@@ -372,7 +375,7 @@ void aiChoice(char *loc[])
                         complete = true;
                     }
                     break;
-                    //row 3
+                    //col 3
                 case 3:
                     if(loc[8] != "X" && loc[8] != "O")
                     {
@@ -424,19 +427,28 @@ void printResults(enum win result, int player)
     }
 }
 //function definition for determine game state
-enum win checkResults(char *loc[])
+enum win checkResults(char *loc[], int player)
 {
-    if(*loc[0] == *loc[3] == *loc[6] || *loc[1] == *loc[4] == *loc[7] || *loc[2] == *loc[5] == *loc[8])
+    char icon;
+    if(player == 1)
+    {
+        icon = 'O';
+    }
+    else
+    {
+        icon = 'X';
+    }
+    if(*loc[0] == icon && *loc[3] == icon && *loc[6] == icon|| *loc[1] == icon && *loc[4] == icon && *loc[7] == icon|| *loc[2] == icon && *loc[5] == icon && *loc[8] == icon)
     {
         return Win;
         printf("win\n");
     }
-    else if(*loc[0] == *loc[1] == *loc[2] || *loc[3] == *loc[4] == *loc[5] || *loc[6] == *loc[7] == *loc[8])
+    else if(*loc[0] == icon && *loc[1] == icon && *loc[2] == icon|| *loc[3] == icon && *loc[4] == icon && *loc[5] == icon|| *loc[6] == icon && *loc[7] == icon && *loc[8] == icon)
     {
         return Win;
         printf("win\n");
     }
-    else if(*loc[0] == *loc[4] == *loc[8] || *loc[2] == *loc[4] == *loc[6])
+    else if(*loc[0] == icon && *loc[4] == icon && *loc[8] == icon|| *loc[2] == icon && *loc[4] == icon && *loc[6] == icon)
     {
         return Win;
         printf("win\n");
