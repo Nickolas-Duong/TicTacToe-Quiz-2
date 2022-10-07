@@ -15,7 +15,7 @@ void playerChoice(int player, char *loc[])
     while(complete != true)
     {   
         //While loop to make sure input is correct
-        while(col <=1 || col > 4 || row <= 1 || row > 4)
+        while(col <1 || col > 4 || row < 1 || row > 4)
         {
             //Ask player to make a move
             printf("Player %d, make a move...\n", player);
@@ -23,9 +23,11 @@ void playerChoice(int player, char *loc[])
             //get input for col
             printf("Choose a column: ");
             col = getChoice();
+            printf("%d\n", col);
             //get input for row
             printf("Choose a row: ");
             row = getChoice();
+            printf("%d\n", row);
 
             //reset if value is incorrect
             if (col < 1 || row < 1 || col >= 4 || row >= 4)
@@ -35,6 +37,8 @@ void playerChoice(int player, char *loc[])
                 row = 0;
             }
         }
+
+        printf("Exit while loop\n");
 
         switch(col)
         {
