@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
+static int count = 0;
 
 enum win{Win, Loss, Scratch, None};
 //Function declaration for player choice

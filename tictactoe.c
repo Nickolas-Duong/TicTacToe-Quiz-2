@@ -4,7 +4,6 @@
 //include system, string, time function, header with functions
 //enum win condition?
 #include "tictactoe.h"
-
 //create main
 int main()
 {
@@ -18,15 +17,22 @@ int main()
         printTable(loc);
         
         playerChoice(1, loc);
-
-        aiChoice(loc);
-
+        count++;
         p1 = checkResults(loc, 1);
+        
+        aiChoice(loc);
+        count++;
         p2 = checkResults(loc, 2);
 
-        if(p1 == Win || p2 == Win)
+        if(p1 == Win)
         {
             inPlay = false;
+            p2 = Loss;
+        }
+        else if(p2 == Win)
+        {
+            inPlay = false;
+            p1 = Loss;
         }
         else
         {

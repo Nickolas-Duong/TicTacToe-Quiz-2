@@ -11,6 +11,11 @@ void playerChoice(int player, char *loc[])
     int choice;
     bool complete = false;
 
+    if(count >= 9)
+    {
+        complete = true;
+    }
+    
     //while loop (move made)
     while(complete != true)
     {   
@@ -264,8 +269,11 @@ void aiChoice(char *loc[])
     int col;
     int row;
     bool complete = false;
-    //randomize random number
-
+    
+    if(count >= 9)
+    {
+        complete = true;
+    }
     
     while(complete != true)
     {
@@ -452,6 +460,10 @@ enum win checkResults(char *loc[], int player)
     {
         return Win;
         printf("win\n");
+    }
+    else if (count >= 9)
+    {
+        return Scratch;   
     }
     else
     {
