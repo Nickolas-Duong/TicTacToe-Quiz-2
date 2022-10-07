@@ -15,7 +15,7 @@ void playerChoice(int player, char *loc[])
     {
         complete = true;
     }
-    
+
     //while loop (move made)
     while(complete != true)
     {   
@@ -31,11 +31,10 @@ void playerChoice(int player, char *loc[])
             //get input for col
             printf("Choose a column: ");
             col = getChoice();
-            printf("%d\n", col);
+
             //get input for row
             printf("Choose a row: ");
             row = getChoice();
-            printf("%d\n", row);
 
             //reset if value is incorrect
             if (col < 1 || row < 1 || col >= 4 || row >= 4)
@@ -45,8 +44,6 @@ void playerChoice(int player, char *loc[])
                 row = 0;
             }
         }
-
-        printf("Exit while loop\n");
 
         switch(row)
         {
@@ -446,20 +443,21 @@ enum win checkResults(char *loc[], int player)
     {
         icon = 'X';
     }
+    
     if(*loc[0] == icon && *loc[3] == icon && *loc[6] == icon|| *loc[1] == icon && *loc[4] == icon && *loc[7] == icon|| *loc[2] == icon && *loc[5] == icon && *loc[8] == icon)
     {
-        return Win;
         printf("win\n");
+        return Win;
     }
     else if(*loc[0] == icon && *loc[1] == icon && *loc[2] == icon|| *loc[3] == icon && *loc[4] == icon && *loc[5] == icon|| *loc[6] == icon && *loc[7] == icon && *loc[8] == icon)
     {
-        return Win;
         printf("win\n");
+        return Win;
     }
     else if(*loc[0] == icon && *loc[4] == icon && *loc[8] == icon|| *loc[2] == icon && *loc[4] == icon && *loc[6] == icon)
     {
-        return Win;
         printf("win\n");
+        return Win;
     }
     else if (count >= 9)
     {
