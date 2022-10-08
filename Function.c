@@ -523,7 +523,7 @@ int getChoice()
     return choice;   
 }
 //Function definition to set game state
-int setGameState()
+int getGameState()
 {
     //Local variable
     int choice = 0;

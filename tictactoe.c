@@ -7,6 +7,7 @@
 //create main
 int main()
 {
+    //Main local variables
     char *loc[9] = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
     bool inPlay = true;
     enum win players[2] = {None, None};
@@ -14,6 +15,8 @@ int main()
     int choice = 0;
 
     count = 0;
+
+    //Ask player what game played
     printf("Welcome! Ready to play Tic-Tac-Toe?\n");
     printf("Please choose a game mode...\n");
     printf("1 - Player vs AI\n");
