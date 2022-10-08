@@ -19,54 +19,61 @@ int main()
     printf("1 - Player vs AI\n");
     printf("2 - Player vs Player\n");
 
-    while(choice != 1 && choice != 2)
-    {
-        choice = getChoice();
+    choice = getGameState();
 
-        if(choice == 1)
-        {
-            printf("Player vs AI mode chosen... beginning game...\n");
-        }
-        else if(choice == 2)
-        {
-            printf("Player vs Player mode chosen... beginning game...\n");
-        }
-        else
-        {
-            printf("Error... choice not recognized...\n");
-        }
-    }
-
+    //Switch for choice of game
     switch (choice)
     {
+    //Player vs AI
     case 1:
+        //While game is in progress
         while(inPlay == true)
-        {
+        {   
+            //Show Game Board
             printTable(loc);
             
+            //get player choice
             playerChoice(1, loc, count);
+
+            //Increment Count
             count++;
+
+            //Check if player 1 has won
             players[0] = checkResults(loc, 1, count);
 
+            //If Player 1 has won
             if(players[0] == Win)
             {
+                //Game no longer in play
                 inPlay = false;
+                
+                //Player 2 has lost
                 players[1] = Loss;
+                
+                //Show Game Results
                 printResults(players);
                 break;
             }
+            //If Player 2 has won
             else if(players[1] == Win)
             {
+                //Game no longer in play
                 inPlay = false;
+
+                //Player 1 has lost
                 players[0] = Loss;
+
+                //Show Game Results
                 printResults(players);
                 break;
             }
+            //game stays in play
             else
             {
                 inPlay = true;
             }
 
+            //AI does takes turn, repeat above
             aiChoice(loc, count);
             count++;
             players[1] = checkResults(loc, 2, count);
@@ -84,26 +91,39 @@ int main()
                 printResults(players);
                 break;
             }
+            //If no one has won
             else if(players[0] == Scratch && players[1] == Scratch)
             {
+                //End game
                 inPlay = false;
+
+                //Show results
                 printResults(players);
             }
             else
             {
+                //Game continues
                 inPlay = true;
             }
         }
         break;
+    //Player vs Player
     case 2:
-while(inPlay == true)
+        while(inPlay == true)
         {
+            //Show game board
             printTable(loc);
             
+            //Get player 1 choice
             playerChoice(1, loc, count);
+
+            //Increase game moves
             count++;
+
+            //Check if player 1 has won
             players[0] = checkResults(loc, 1, count);
 
+            //Repeat like PvE
             if(players[0] == Win)
             {
                 inPlay = false;
@@ -123,8 +143,10 @@ while(inPlay == true)
                 inPlay = true;
             }
 
+            //Show Game Board again
             printTable(loc);
 
+            //Get player 2 input, like player 1
             playerChoice(2, loc, count);
             count++;
             players[1] = checkResults(loc, 2, count);
@@ -142,6 +164,7 @@ while(inPlay == true)
                 printResults(players);
                 break;
             }
+            //If game was not won by any
             else if(players[0] == Scratch && players[1] == Scratch)
             {
                 inPlay = false;
@@ -157,42 +180,6 @@ while(inPlay == true)
         break;
     }
 
-    
-
+    //End program
     return 0;
 }
-//variables
-//int p1Choice
-//int p2Choice
-//char loc[]
-//bool complete
-
-//while loop to get chosen user choice
-//Print out user menu
-
-//Ask for user input
-
-//determine game choice based on user choice (prevent any choice not allowed)
-
-//switch based on choice
-//end while loop
-
-//case 1: Player v AI
-//while loop where player plays the game against an AI
-//condition = Enum status
-//print current game board
-
-//player inputs location via numbers for column | rows (prevent choosing a location already taken)
-
-//AI then randomly chooses an option, re rolling when spot is occupied
-
-//check for win condition met
-//if else for enum
-//change enum to game result
-//print result of game
-//break from loop
-
-//case 2: player v player
-//Repeat case 1, except allow player 2 to input choices instead of AI
-
-//end program

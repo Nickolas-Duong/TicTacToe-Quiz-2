@@ -20,4 +20,6 @@ void printResults(enum win result[]);
 enum win checkResults(char *loc[], int player, int count);
 //function definition to get user input
 int getChoice();
+//function definition to set game state
+int getGameState();
 #endif
